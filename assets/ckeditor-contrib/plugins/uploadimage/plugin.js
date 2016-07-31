@@ -12,7 +12,6 @@
 		onLoad: function() {
 			CKEDITOR.addCss(
 				'.cke_upload_uploading img{' +
-					'opacity: 0.3' +
 				'}'
 			);
 		},
@@ -48,15 +47,31 @@
 				},
 
 				onUploading: function( upload ) {
-					// Show the image during the upload.
-					this.parts.img.setAttribute( 'src', upload.data );
+                    // Show the image during the upload.
+                    var width = this.parts.img.$.naturalWidth;
+                    var height = this.parts.img.$.naturalHeight;
+                    if(width > 640){
+                        height = Math.ceil(640 / width * height)
+                        width = 640;
+                    }
+                    this.parts.img.setAttribute( 'width', width );
+                    this.parts.img.setAttribute( 'height', height );
+                    this.parts.img.setAttribute( 'src', upload.data );
+
 				},
 
-				onUploaded: function( upload ) {
+                onUploaded: function( upload ) {
+                    var width = this.parts.img.$.naturalWidth;
+                    var height = this.parts.img.$.naturalHeight;
+                    if(width > 640){
+                        height = Math.ceil(640 / width * height)
+                        width = 640;
+                    }
 					// Set width and height to prevent blinking.
 					this.replaceWith( '<img src="' + upload.url + '" ' +
-						'width="' + this.parts.img.$.naturalWidth + '" ' +
-						'height="' + this.parts.img.$.naturalHeight + '">' );
+						'width="' + width + '" ' +
+                        'height="' + height + '">' );
+                    editor.fire( 'change' );
 				}
 			} );
 

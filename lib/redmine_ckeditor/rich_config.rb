@@ -23,7 +23,7 @@ if Object.const_defined?("Rich")
     # By default, Rich visualizes what type of element
     # you are editing. To disable this:
     #   config.editor[:startupOutlineBlocks] = false
-
+    config.editor[:startupOutlineBlocks] = false
 
     # == Image styles
     #

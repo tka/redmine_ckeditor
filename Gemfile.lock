@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/tka/rich.git
-  revision: 9a72842f0d45417c3db8db572338838bf5a935a8
+  revision: a1de415b422a4f9532fd4975ffa2ee2c8c0dc2c2
   specs:
     rich (1.4.8)
       jquery-rails

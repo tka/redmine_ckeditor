@@ -45,10 +45,11 @@
 				var fileLoader = evt.data.fileLoader,
 					formData = new FormData();
 
-				formData.append( 'upload', fileLoader.file, fileLoader.fileName );
+				formData.append( 'file', fileLoader.file, fileLoader.fileName );
+				formData.append( 'simplified_type', 'image'  );
 
 				// Append token preventing CSRF attacks.
-				formData.append( 'ckCsrfToken', CKEDITOR.tools.getCsrfToken() );
+				formData.append( 'authenticity_token', CKEDITOR.tools.getCsrfToken() );
 
 				fileLoader.xhr.send( formData );
 			}, null, null, 999 );
