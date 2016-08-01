@@ -29,7 +29,7 @@ module RedmineCkeditor
         'image-url("rich/', 'url("../images/'
 
       append_to_file RedmineCkeditor.root.join("assets/stylesheets/editor.css"),
-        "\nhtml, body {\n  height: 100%;\n}\n"
+        "\nhtml, body {\n  height: 100%; font-size: 16px\n}\n"
     end
   end
 end
